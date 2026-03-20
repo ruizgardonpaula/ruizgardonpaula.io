@@ -3,137 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Paula Ruiz</title>
+    <title>Paula Ruiz | Cybersecurity & AI Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg: #0a0a0a;
-            --accent: #00ff41; /* Verde terminal */
-            --text: #e0e0e0;
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --accent: #00ff41;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --border: #30363d;
         }
 
+        * { box-sizing: border-box; }
         body {
             background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            border: 1px solid var(--accent);
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
 
+        /* HEADER */
         header {
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid var(--accent);
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            background: rgba(0, 255, 65, 0.02);
         }
+        h1 { color: var(--accent); font-family: monospace; margin: 0; font-size: 2.2rem; }
+        .glitch { position: relative; display: inline-block; }
+        .subtitle { color: var(--text-dim); margin-top: 10px; font-weight: 300; letter-spacing: 1px; }
+        .contact-info { margin-top: 20px; font-size: 0.9rem; }
+        .contact-info a { color: var(--accent); text-decoration: none; margin: 0 10px; }
 
-        h1 { color: var(--accent); margin: 0; font-size: 1.8rem; }
+        /* SECCIONES */
+        section { margin-bottom: 50px; opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        section.visible { opacity: 1; transform: translateY(0); }
+        
+        h2 {
+            font-family: monospace;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+        }
+        h2::before { content: "> "; margin-right: 10px; }
+
+        /* GRIDS & CARDS */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .card:hover { border-color: var(--accent); }
         
         .badge {
-            background: rgba(0, 255, 65, 0.1);
+            background: #21262d;
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin: 3px;
+            display: inline-block;
+            color: var(--accent);
+        }
+
+        .exp-meta { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 10px; display: block; }
+        .job-title { font-weight: bold; color: #fff; display: block; }
+
+        /* INTERACTIVIDAD */
+        .terminal-btn {
+            background: transparent;
             border: 1px solid var(--accent);
-            padding: 2px 8px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            display: inline-block;
+            color: var(--accent);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: monospace;
+            margin-top: 20px;
         }
+        .terminal-btn:hover { background: var(--accent); color: var(--bg); }
 
-        section { margin-bottom: 30px; }
-
-        h2 {
-            background: var(--accent);
-            color: var(--bg);
-            display: inline-block;
-            padding: 0 10px;
-            text-transform: uppercase;
-            font-size: 1.1rem;
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.6rem; }
         }
-
-        .exp-item { border-left: 2px solid var(--accent); padding-left: 15px; margin-bottom: 20px; }
-
-        /* Efecto de escritura interactivo */
-        .typing::after { content: "|"; animation: blink 0.7s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
-
-        /* Responsividad básica */
-        @media (max-width: 600px) {
-            body { font-size: 14px; padding: 10px; }
-            h1 { font-size: 1.4rem; }
-        }
-
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>> PAULA_RUIZ_GARDON <span class="typing"></span></h1>
-        <p>Ingeniera Informática | Especialista en Ciberseguridad, IA & Software</p>
-        <div>
-            <a href="mailto:ruizgardonpaula@gmail.com">Email</a> | 
-            <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank">LinkedIn</a> | 
-            Sevilla, ES
+        <h1 class="glitch">PAULA RUIZ GARDÓN</h1>
+        <p class="subtitle">Ingeniera Informática | Especialista en Ciberseguridad, IA y Desarrollo de Software</p>
+        <div class="contact-info">
+            <span><i class="fas fa-map-marker-alt"></i> Sevilla, España</span>
+            <a href="mailto:ruizgardonpaula@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         </div>
+        <button class="terminal-btn" onclick="alert('Descargando CV... (Simulación)')">ACCESS_FULL_RESUME.exe</button>
     </header>
 
-    <section id="perfil">
-        <h2>01. PERFIL_PROFESIONAL</h2>
-        <p>Experiencia operativa en entornos corporativos (SOC/IAM) apoyando la monitorización de seguridad, hardening y auditoría. Enfoque en la automatización mediante IA y desarrollo escalable.</p>
+    <section id="profile">
+        <h2>PERFIL_PROFESIONAL</h2>
+        <p>Ingeniera Informática especializada en Ciberseguridad, Inteligencia Artificial e Ingeniería de Software. Experiencia operativa en entornos corporativos apoyando la monitorización de seguridad, procesos de IAM, hardening de sistemas y auditoría. Sólida base académica en Machine Learning y Deep Learning, con enfoque en la automatización de la ciberseguridad y el desarrollo de software escalable.</p>
+    </section>
+
+    <section id="experience">
+        <h2>EXPERIENCIA_LABORAL</h2>
+        <div class="card" style="margin-bottom: 20px;">
+            <span class="job-title">Analista de Ciberseguridad IT</span>
+            <span class="exp-meta">Atlantica Sustainable Infrastructure | Feb 2026 – Presente</span>
+            <ul>
+                <li>Gestión de IAM en entornos Microsoft y Azure, administrando identidades y privilegios.</li>
+                <li>Aplicación de System Hardening y políticas de seguridad para reducir la superficie de ataque.</li>
+                <li>Soporte en Auditorías y redacción de documentación técnica de cumplimiento.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <span class="job-title">Consultora de Seguridad</span>
+            <span class="exp-meta">Avanade Spain S.L.U. | Mar 2025 – Sep 2025</span>
+            <ul>
+                <li>Monitorización de alertas y respuesta ante incidentes en entornos SOC.</li>
+                <li>Mitigación de Phishing mediante el uso de la herramienta Abnormal Security.</li>
+                <li>Revisión de configuraciones y aplicación de Best Practices de seguridad industrial.</li>
+            </ul>
+        </div>
     </section>
 
     <section id="skills">
-        <h2>02. APTITUDES_TÉCNICAS</h2>
-        <div>
-            <p><strong>CIBER:</strong> <span class="badge">Azure AD</span> <span class="badge">IAM</span> <span class="badge">Hardening</span> <span class="badge">Abnormal Security</span></p>
-            <p><strong>IA:</strong> <span class="badge">Python</span> <span class="badge">Scikit-learn</span> <span class="badge">XGBoost</span> <span class="badge">Deep Learning</span></p>
-            <p><strong>DEV:</strong> <span class="badge">React Native</span> <span class="badge">JavaScript</span> <span class="badge">Git</span></p>
+        <h2>APTITUDES_TÉCNICAS</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Ciberseguridad</h3>
+                <span class="badge">Microsoft 365 Security</span> <span class="badge">Azure AD</span>
+                <span class="badge">IAM</span> <span class="badge">System Hardening</span>
+                <span class="badge">Phishing Defense</span> <span class="badge">Burp Suite</span>
+                <span class="badge">Nmap</span> <span class="badge">OWASP</span>
+            </div>
+            <div class="card">
+                <h3>IA & Datos</h3>
+                <span class="badge">Python (Pandas, NumPy)</span> <span class="badge">Scikit-learn</span>
+                <span class="badge">XGBoost</span> <span class="badge">Machine Learning</span>
+                <span class="badge">Deep Learning</span>
+            </div>
+            <div class="card">
+                <h3>Desarrollo</h3>
+                <span class="badge">Java</span> <span class="badge">React Native</span>
+                <span class="badge">HTML5/CSS3</span> <span class="badge">JavaScript</span>
+                <span class="badge">Git/GitHub</span>
+            </div>
+            <div class="card">
+                <h3>Sistemas</h3>
+                <span class="badge">Linux</span> <span class="badge">Windows Server</span>
+                <span class="badge">VirtualBox</span> <span class="badge">Auditoría Técnica</span>
+            </div>
         </div>
     </section>
 
-    <section id="experiencia">
-        <h2>03. EXPERIENCIA_RECIENTE</h2>
-        <div class="exp-item">
-            <strong>Atlantica Sustainable Infrastructure</strong> | Analista Ciberseguridad IT
-            <br><small>Feb 2026 – Presente</small>
-            <ul>
-                <li>Gestión de IAM en entornos Microsoft y Azure.</li>
-                <li>Políticas de System Hardening y soporte en Auditorías.</li>
-            </ul>
+    <section id="education">
+        <h2>FORMACIÓN_Y_CERTIFICADOS</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="job-title">Máster en Ciberseguridad e IA</span>
+                <span class="exp-meta">CEI | 2025 - 2026</span>
+            </div>
+            <div class="card">
+                <span class="job-title">Grado en Ingeniería Informática</span>
+                <span class="exp-meta">Univ. de Sevilla | 2021 - 2025</span>
+            </div>
         </div>
-        <div class="exp-item">
-            <strong>Avanade Spain</strong> | Consultora de Seguridad
-            <br><small>2025</small>
+        <div style="margin-top: 20px;">
+            <span class="badge">Google: Foundations of Cybersecurity</span>
+            <span class="badge">Cisco: Introduction to Cybersecurity</span>
+            <span class="badge">Google: Python Essentials 1 & 2</span>
         </div>
     </section>
 
-    <footer>
-        <p style="text-align: center; font-size: 0.7rem; color: #666;">
-            -- SISTEMA OPERATIVO PAULA v1.0 --
-        </p>
+    <footer style="text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 50px;">
+        <p>[PAULA_RUIZ_GARDON] - 2026. Built with Clean Code & Security Mindset.</p>
     </footer>
 </div>
 
 <script>
-    // Un pequeño toque interactivo: efecto de escritura en el título
-    const text = "LOGIN_SUCCESSFUL";
-    let i = 0;
-    function typeWriter() {
-        if (i < text.length) {
-            document.querySelector(".typing").innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 150);
-        }
-    }
-    window.onload = typeWriter;
+    // Efecto de aparición al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
 </script>
 
 </body>
