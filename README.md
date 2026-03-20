@@ -2,7 +2,7 @@
 
 Bienvenido/a a mi portfolio profesional. Este proyecto es una Single Page Application (SPA) diseñada para mostrar mi trayectoria, formación y stack tecnológico en las áreas de **Ciberseguridad**, **IA** y **Desarrollo de Software**.
 
-🌐 **Puedes ver el portfolio en vivo aquí:** [ruizgardonpaula.github.io](https://ruizgardonpaula.github.io/ruizgardonpaula.io/)
+🌐 **Puedes ver el portfolio en vivo aquí:** [ruizgardonpaula.github.io](https://ruizgardonpaula.github.io/ruizgardonpaula/)
 
 ---
 
