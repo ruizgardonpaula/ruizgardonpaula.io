@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Paula Ruiz</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --accent: #00ff41; /* Verde terminal */
+            --text: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            border: 1px solid var(--accent);
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+        }
+
+        header {
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 { color: var(--accent); margin: 0; font-size: 1.8rem; }
+        
+        .badge {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--accent);
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        section { margin-bottom: 30px; }
+
+        h2 {
+            background: var(--accent);
+            color: var(--bg);
+            display: inline-block;
+            padding: 0 10px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .exp-item { border-left: 2px solid var(--accent); padding-left: 15px; margin-bottom: 20px; }
+
+        /* Efecto de escritura interactivo */
+        .typing::after { content: "|"; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Responsividad básica */
+        @media (max-width: 600px) {
+            body { font-size: 14px; padding: 10px; }
+            h1 { font-size: 1.4rem; }
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>> PAULA_RUIZ_GARDON <span class="typing"></span></h1>
+        <p>Ingeniera Informática | Especialista en Ciberseguridad, IA & Software</p>
+        <div>
+            <a href="mailto:ruizgardonpaula@gmail.com">Email</a> | 
+            <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank">LinkedIn</a> | 
+            Sevilla, ES
+        </div>
+    </header>
+
+    <section id="perfil">
+        <h2>01. PERFIL_PROFESIONAL</h2>
+        <p>Experiencia operativa en entornos corporativos (SOC/IAM) apoyando la monitorización de seguridad, hardening y auditoría. Enfoque en la automatización mediante IA y desarrollo escalable.</p>
+    </section>
+
+    <section id="skills">
+        <h2>02. APTITUDES_TÉCNICAS</h2>
+        <div>
+            <p><strong>CIBER:</strong> <span class="badge">Azure AD</span> <span class="badge">IAM</span> <span class="badge">Hardening</span> <span class="badge">Abnormal Security</span></p>
+            <p><strong>IA:</strong> <span class="badge">Python</span> <span class="badge">Scikit-learn</span> <span class="badge">XGBoost</span> <span class="badge">Deep Learning</span></p>
+            <p><strong>DEV:</strong> <span class="badge">React Native</span> <span class="badge">JavaScript</span> <span class="badge">Git</span></p>
+        </div>
+    </section>
+
+    <section id="experiencia">
+        <h2>03. EXPERIENCIA_RECIENTE</h2>
+        <div class="exp-item">
+            <strong>Atlantica Sustainable Infrastructure</strong> | Analista Ciberseguridad IT
+            <br><small>Feb 2026 – Presente</small>
+            <ul>
+                <li>Gestión de IAM en entornos Microsoft y Azure.</li>
+                <li>Políticas de System Hardening y soporte en Auditorías.</li>
+            </ul>
+        </div>
+        <div class="exp-item">
+            <strong>Avanade Spain</strong> | Consultora de Seguridad
+            <br><small>2025</small>
+        </div>
+    </section>
+
+    <footer>
+        <p style="text-align: center; font-size: 0.7rem; color: #666;">
+            -- SISTEMA OPERATIVO PAULA v1.0 --
+        </p>
+    </footer>
+</div>
+
+<script>
+    // Un pequeño toque interactivo: efecto de escritura en el título
+    const text = "LOGIN_SUCCESSFUL";
+    let i = 0;
+    function typeWriter() {
+        if (i < text.length) {
+            document.querySelector(".typing").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 150);
+        }
+    }
+    window.onload = typeWriter;
+</script>
+
+</body>
+</html>
