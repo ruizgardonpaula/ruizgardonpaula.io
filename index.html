@@ -107,6 +107,17 @@
         .story-item ul { margin-top: 20px; color: var(--text-p); padding-left: 20px; }
         .story-item li { margin-bottom: 10px; }
 
+        /* PROYECTOS */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 40px; }
+        .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 30px; display: flex; flex-direction: column; transition: var(--transition); }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
+        .project-card h3 { margin: 15px 0 10px 0; font-size: 1.3rem; }
+        .project-card p { font-size: 0.9rem; color: var(--text-p); line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
+        .project-card .icon { font-size: 2rem; color: var(--primary); }
+        .project-links { display: flex; gap: 15px; margin-top: auto; }
+        .project-links a { color: var(--dark); font-size: 1.2rem; transition: 0.3s; }
+        .project-links a:hover { color: var(--primary); }
+
         /* IDIOMAS Y SOFT SKILLS */
         .side-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .progress-bar { height: 8px; background: #e2e8f0; border-radius: 10px; margin-top: 8px; overflow: hidden; }
@@ -134,6 +145,7 @@
         <a href="#perfil" data-section="nav1">Perfil</a>
         <a href="#experiencia" data-section="nav2">Trayectoria</a>
         <a href="#skills" data-section="nav3">Tecnologías</a>
+        <a href="#proyectos" data-section="nav5">Proyectos</a>
         <a href="#educacion" data-section="nav4">Formación</a>
     </div>
     <div style="display: flex; align-items: center;">
@@ -244,8 +256,59 @@
     </div>
 </div>
 
+<div class="container" id="proyectos">
+    <span class="section-label" data-section="label_proj">04. Portfolio</span>
+    <h2 data-section="h2_proj">Proyectos Destacados</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <div class="icon"><i class="fas fa-microchip"></i></div>
+            <h3 data-section="proj1_title">TFG: Automatización VM</h3>
+            <p data-section="proj1_desc">Extensión integrable con Virt-Manager para automatizar la creación de máquinas virtuales desde plantillas y gestión libvirt.</p>
+            <div class="tag-container" style="margin-bottom: 15px;">
+                <span class="tag">Python</span> <span class="tag">KVM/QEMU</span> <span class="tag">GTK+ 3</span> <span class="tag">Libvirt</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/pauruigar6" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="icon"><i class="fas fa-users-gear"></i></div>
+            <h3 data-section="proj2_title">Whizzy App</h3>
+            <p data-section="proj2_desc">App colaborativa para gestión de tareas domésticas con sistema de puntos, ranking y despliegue multiplataforma.</p>
+            <div class="tag-container" style="margin-bottom: 15px;">
+                <span class="tag">React Native</span> <span class="tag">Expo</span> <span class="tag">File-routing</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/pauruigar6/Whizzy" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="icon"><i class="fas fa-file-medical"></i></div>
+            <h3 data-section="proj3_title">CareMonitor-IPe2</h3>
+            <p data-section="proj3_desc">Aplicación eHealth para la gestión de datos de salud, con integración de audio, fotos y persistencia en Firebase.</p>
+            <div class="tag-container" style="margin-bottom: 15px;">
+                <span class="tag">JavaScript</span> <span class="tag">Firebase</span> <span class="tag">Expo</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/pauruigar6/CareMonitor-IPe2" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="icon"><i class="fas fa-monument"></i></div>
+            <h3 data-section="proj4_title">Seville Website</h3>
+            <p data-section="proj4_desc">Proyecto web visual sobre Sevilla con diseño responsive, news slider interactivo y transiciones dinámicas.</p>
+            <div class="tag-container" style="margin-bottom: 15px;">
+                <span class="tag">HTML5</span> <span class="tag">CSS3</span> <span class="tag">JS Interactivo</span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/pauruigar6/WebDesign" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container" id="educacion">
-    <span class="section-label" data-section="label4">04. Formación</span>
+    <span class="section-label" data-section="label4">05. Formación</span>
     <h2 data-section="h2_4">Preparación Académica</h2>
     
     <div class="side-grid">
@@ -279,7 +342,7 @@
 </div>
 
 <div class="container">
-    <span class="section-label" data-section="label5">05. Habilidades</span>
+    <span class="section-label" data-section="label5">06. Habilidades</span>
     <h2 data-section="h2_5">Soft Skills</h2>
     <div class="tag-container" style="margin-top: 20px;">
         <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);" data-section="soft1">Pensamiento Analítico</span>
@@ -304,7 +367,7 @@
 <script>
     const translations = {
         es: {
-            nav1: "Perfil", nav2: "Trayectoria", nav3: "Tecnologías", nav4: "Formación",
+            nav1: "Perfil", nav2: "Trayectoria", nav3: "Tecnologías", nav4: "Formación", nav5: "Proyectos",
             hero_tag: "Cybersecurity, IA & Software Engineer",
             hero_h1: "Paula <span>Ruiz</span>",
             hero_p: "<strong>Sólida base académica</strong> en IA y Software. <br> <strong>Experiencia operativa</strong> en Ciberseguridad corporativa.",
@@ -317,40 +380,49 @@
             job2_list: "<li><strong>Identidad (IAM):</strong> Apoyo en la gestión de IAM en entornos Microsoft y Azure AD.</li><li><strong>Hardening:</strong> Colaboración en la aplicación de System Hardening y políticas de seguridad.</li><li><strong>Cumplimiento:</strong> Redacción de documentación técnica y soporte en gobernanza de identidad.</li>",
             label3: "03. Stack Tecnológico", h2_3: "Aptitudes Técnicas",
             skill_ciber: "<i class='fas fa-shield-halved'></i> Ciberseguridad", skill_ia: "<i class='fas fa-brain'></i> IA & Data Science", skill_dev: "<i class='fas fa-laptop-code'></i> Desarrollo", skill_sys: "<i class='fas fa-server'></i> Sistemas",
-            label4: "04. Formación", h2_4: "Preparación Académica",
+            label_proj: "04. Portfolio", h2_proj: "Proyectos Destacados",
+            proj1_title: "TFG: Automatización VM", proj1_desc: "Extensión para Virt-Manager que automatiza la creación de máquinas virtuales desde plantillas y gestión de pools libvirt.",
+            proj2_title: "Whizzy App", proj2_desc: "Aplicación colaborativa de gestión de tareas domésticas con gamificación y ranking por puntos.",
+            proj3_title: "CareMonitor-IPe2", proj3_desc: "App eHealth para la gestión de datos de salud integrada con Firebase y grabación de audio.",
+            proj4_title: "Seville Website", proj4_desc: "Plataforma visual interactiva sobre Sevilla con diseño responsive y sliders dinámicos.",
+            label4: "05. Formación", h2_4: "Preparación Académica",
             edu1_title: "Máster Ciberseguridad e IA", edu2_title: "Grado Ingeniería Informática (TI)", edu2_sub: "Incluye Erasmus+ en Brno Tech, Rep. Checa",
             cert_title: "Certificaciones & Idiomas",
             lang_es: "Español", lang_en: "Inglés", lang_de: "Alemán", lang_native: "Nativo",
-            label5: "05. Habilidades", h2_5: "Soft Skills",
+            label5: "06. Habilidades", h2_5: "Soft Skills",
             soft1: "Pensamiento Analítico", soft2: "Resolución de Problemas", soft3: "Comunicación Técnica", soft4: "Adaptabilidad Agile", soft5: "Proactividad",
             footer_h2: "¿Trabajamos juntos?", footer_copy: "Diseñado como Portfolio Interactivo • 2026"
         },
         en: {
-            nav1: "Profile", nav2: "Experience", nav3: "Tech Stack", nav4: "Education",
+            nav1: "Profile", nav2: "History", nav3: "Tech Stack", nav4: "Education", nav5: "Projects",
             hero_tag: "Cybersecurity, AI & Software Engineer",
             hero_h1: "Paula <span>Ruiz</span>",
             hero_p: "<strong>Solid academic background</strong> in AI and Software. <br> <strong>Operational experience</strong> in corporate Cybersecurity.",
             label1: "01. Introduction", h2_1: "Professional Profile",
-            p_intro: "Computer Engineer interested in the intersection of <strong>AI</strong> and <strong>Cybersecurity</strong>. I have an academic background focused on software development and data analysis, complemented by operational experience in support and monitoring environments (SOC/IAM). <br><br> Constantly learning to apply efficient technical solutions in professional environments.",
+            p_intro: "Computer Engineer interested in the intersection of <strong>AI</strong> and <strong>Cybersecurity</strong>. I have an academic base focused on software development and data analysis, complemented by operational experience in support and monitoring (SOC/IAM). <br><br> Constantly learning to apply efficient technical solutions in professional environments.",
             label2: "02. Experience", h2_2: "Operational History",
             date1: "February 2026 — Present", job1_title: "IT Cybersecurity Analyst",
-            job1_list: "<li><strong>Monitoring:</strong> Assistance in alert monitoring and incident response support.</li><li><strong>Anti-Phishing Defense:</strong> Collaboration in phishing mitigation.</li><li><strong>Governance:</strong> Support in configuration review and security Best Practices application.</li>",
+            job1_list: "<li><strong>Monitoring:</strong> Alert monitoring assistance and incident response support.</li><li><strong>Anti-Phishing:</strong> Collaboration in phishing mitigation.</li><li><strong>Governance:</strong> Support in configuration review and security Best Practices application.</li>",
             date2: "March 2025 — September 2025", job2_title: "Security Consultant",
-            job2_list: "<li><strong>Identity (IAM):</strong> Support in IAM management for Microsoft and Azure AD environments.</li><li><strong>Hardening:</strong> Collaboration in applying System Hardening and security policies.</li><li><strong>Compliance:</strong> Technical documentation writing and identity governance support.</li>",
+            job2_list: "<li><strong>Identity (IAM):</strong> Support in IAM management for Microsoft and Azure AD environments.</li><li><strong>Hardening:</strong> Collaboration in System Hardening and security policies.</li><li><strong>Compliance:</strong> Technical documentation and identity governance support.</li>",
             label3: "03. Tech Stack", h2_3: "Technical Skills",
-            skill_ciber: "<i class='fas fa-shield-halved'></i> Cybersecurity", skill_ia: "<i class='fas fa-brain'></i> AI & Data Science", skill_dev: "<i class='fas fa-laptop-code'></i> Development", skill_sys: "<i class='fas fa-server'></i> Systems",
-            label4: "04. Education", h2_4: "Academic Background",
+            skill_ciber: "<i class='fas fa-shield-halved'></i> Cybersecurity", skill_ia: "<i class='fas fa-brain'></i> IA & Data Science", skill_dev: "<i class='fas fa-laptop-code'></i> Development", skill_sys: "<i class='fas fa-server'></i> Systems",
+            label_proj: "04. Portfolio", h2_proj: "Featured Projects",
+            proj1_title: "Thesis: VM Automation", proj1_desc: "Virt-Manager extension to automate VM creation using templates and libvirt management.",
+            proj2_title: "Whizzy App", proj2_desc: "Collaborative household task management app with gamification and point system.",
+            proj3_title: "CareMonitor-IPe2", proj3_desc: "eHealth app for health data management integrated with Firebase and audio recording.",
+            proj4_title: "Seville Website", proj4_desc: "Visual interactive Seville platform with responsive design and dynamic sliders.",
+            label4: "05. Education", h2_4: "Academic Background",
             edu1_title: "Master in Cybersecurity & AI", edu2_title: "Bachelor's in Computer Engineering (IT)", edu2_sub: "Includes Erasmus+ at Brno Tech, Czech Republic",
             cert_title: "Certifications & Languages",
             lang_es: "Spanish", lang_en: "English", lang_de: "German", lang_native: "Native",
-            label5: "05. Skills", h2_5: "Soft Skills",
+            label5: "06. Skills", h2_5: "Soft Skills",
             soft1: "Analytical Thinking", soft2: "Problem Solving", soft3: "Technical Communication", soft4: "Agile Adaptability", soft5: "Proactivity",
             footer_h2: "Let's work together?", footer_copy: "Designed as Interactive Portfolio • 2026"
         }
     };
 
     function setLanguage(lang) {
-        // Actualizar todos los elementos con data-section
         document.querySelectorAll('[data-section]').forEach(el => {
             const key = el.getAttribute('data-section');
             if (translations[lang][key]) {
@@ -358,17 +430,14 @@
             }
         });
 
-        // Actualizar estado de los botones
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.remove('active');
             if (btn.innerText.toLowerCase() === lang) btn.classList.add('active');
         });
 
-        // Guardar preferencia
         localStorage.setItem('preferredLang', lang);
     }
 
-    // Cargar idioma guardado o por defecto
     window.onload = () => {
         const savedLang = localStorage.getItem('preferredLang') || 'es';
         setLanguage(savedLang);
