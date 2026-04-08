@@ -6,341 +6,423 @@
     <title>Paula Ruiz | Cybersecurity & AI Engineer</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #0a0a0a;
-            --surface: #161616;
-            --border: #262626;
-            --primary: #E97451; /* El salmón oscuro / coral */
-            --text-main: #ffffff;
-            --text-dim: #a1a1aa;
-            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            --bg: #ffffff;
+            --fg: #0a0a0a;
+            --surface: #f5f5f5;
+            --accent: #cd5c5c; /* Salmón oscuro / Terracota */
+            --accent-soft: #fdf2f2;
+            --border: #e5e5e5;
+            --text-muted: #666666;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { box-sizing: border-box; scroll-behavior: smooth; }
-        
         body {
             background-color: var(--bg);
-            color: var(--text-main);
+            color: var(--fg);
             font-family: 'Plus Jakarta Sans', sans-serif;
             margin: 0;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* --- NAVEGACIÓN --- */
+        /* NAVEGACIÓN MINIMALISTA */
         nav {
             position: fixed;
-            top: 25px; left: 50%;
-            transform: translateX(-50%);
-            width: 90%; max-width: 1000px;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            border-radius: 100px;
+            top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(10px);
             z-index: 1000;
-            padding: 10px 25px;
+            padding: 20px 5%;
             display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--border);
         }
-        
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--fg); 
+            font-size: 0.8rem; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition); 
+        }
+        .nav-links a:hover { color: var(--accent); }
 
-        .lang-btn { background: none; border: 1px solid var(--border); cursor: pointer; color: var(--text-dim); padding: 4px 8px; border-radius: 6px; font-size: 0.7rem; transition: 0.3s; }
-        .lang-btn.active { border-color: var(--primary); color: var(--primary); }
+        .lang-control { display: flex; gap: 10px; margin-right: 20px; }
+        .lang-btn { 
+            background: none; border: none; cursor: pointer; 
+            font-family: 'JetBrains Mono'; font-size: 0.75rem; 
+            color: var(--text-muted); transition: 0.3s; 
+        }
+        .lang-btn.active { color: var(--accent); font-weight: 800; }
 
-        /* --- HERO --- */
+        /* HERO SECTION */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 100px 20px;
-            background: radial-gradient(circle at 50% 50%, #1a1512 0%, #0a0a0a 100%);
+            text-align: center; padding: 120px 20px;
+            background-image: radial-gradient(circle at 2px 2px, var(--border) 1px, transparent 0);
+            background-size: 40px 40px;
         }
-
         .profile-photo {
-            width: 160px; height: 160px;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Forma orgánica */
-            object-fit: cover;
-            border: 2px solid var(--primary);
-            margin-bottom: 30px;
-            animation: blob 8s infinite alternate;
+            width: 150px; height: 150px;
+            border-radius: 50%; object-fit: cover;
+            filter: grayscale(100%);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            padding: 5px;
         }
+        .profile-photo:hover { filter: grayscale(0%); transform: rotate(5deg); border-color: var(--accent); }
 
-        @keyframes blob {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
-        }
+        .hero h1 { font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 800; margin: 20px 0; letter-spacing: -0.04em; line-height: 0.9; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; }
 
-        .hero h1 { font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 800; margin: 0; line-height: 0.9; letter-spacing: -4px; }
-        .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin-top: 20px; font-weight: 300; }
+        /* SECCIONES GEOMÉTRICAS */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; letter-spacing: -0.02em; }
+        .section-label { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; display: block; }
 
-        /* --- SECCIONES --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
-        .section-label { font-family: 'JetBrains Mono'; color: var(--primary); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        h2 { font-size: 3rem; font-weight: 700; margin-top: 0; letter-spacing: -2px; }
-
-        /* --- BENTO GRID --- */
-        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+        /* BENTO GRID SKILLS */
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 15px; }
         .bento-card { 
             background: var(--surface); border: 1px solid var(--border); 
-            border-radius: 32px; padding: 35px; transition: var(--transition);
-            position: relative; overflow: hidden;
+            border-radius: 12px; padding: 25px; transition: var(--transition); 
         }
-        .bento-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .bento-card:hover { border-color: var(--accent); background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .bento-card h3 { margin-top: 0; font-size: 1rem; color: var(--fg); text-transform: uppercase; letter-spacing: 1px; }
         
-        /* --- PROYECTOS (FLIP CARDS) --- */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .flip-card {
-            background-color: transparent;
-            width: 100%; height: 350px;
-            perspective: 1000px;
-        }
-
+        /* FLIP CARDS PROYECTOS */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .flip-card { background-color: transparent; height: 350px; perspective: 1000px; }
         .flip-card-inner {
             position: relative; width: 100%; height: 100%;
-            text-align: center; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-style: preserve-3d;
         }
-
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-
-        .flip-front, .flip-back {
+        .flip-card-front, .flip-card-back {
             position: absolute; width: 100%; height: 100%;
             -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            border-radius: 32px; border: 1px solid var(--border);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 30px;
+            border-radius: 15px; border: 1px solid var(--border); padding: 30px;
+            display: flex; flex-direction: column;
+        }
+        .flip-card-front { background: white; justify-content: center; align-items: center; text-align: center; }
+        .flip-card-back { 
+            background: var(--fg); color: white; transform: rotateY(180deg); 
+            justify-content: space-between;
+        }
+        .tag { 
+            background: var(--accent-soft); color: var(--accent); 
+            padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; 
         }
 
-        .flip-front { background: var(--surface); color: white; }
-        .flip-back { 
-            background: var(--primary); color: #0a0a0a; 
-            transform: rotateY(180deg); 
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* TRAYECTORIA */
+        .timeline { border-left: 1px solid var(--border); padding-left: 30px; }
+        .timeline-item { position: relative; margin-bottom: 50px; }
+        .timeline-item::before { 
+            content: ""; position: absolute; left: -36px; top: 5px; 
+            width: 10px; height: 10px; background: var(--accent); border-radius: 50%;
         }
-        .flip-back h3 { margin: 0; font-weight: 800; }
-        .flip-back p { font-size: 0.95rem; font-weight: 500; line-height: 1.4; }
+        .company { font-family: 'JetBrains Mono'; color: var(--accent); font-weight: 500; }
 
-        .tag { background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; color: var(--primary); border: 1px solid var(--border); }
-        .flip-back .tag { background: rgba(0,0,0,0.1); color: #0a0a0a; border-color: rgba(0,0,0,0.2); }
+        footer { background: var(--fg); color: white; padding: 100px 20px; text-align: center; }
 
-        /* --- EXPERIENCE --- */
-        .exp-item { padding: 30px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 250px 1fr; }
-        .exp-date { font-family: 'JetBrains Mono'; color: var(--primary); font-size: 0.9rem; }
-        .exp-content h4 { font-size: 1.5rem; margin: 0 0 10px 0; }
-        .exp-company { color: var(--text-dim); margin-bottom: 15px; display: block; font-weight: 600; }
-
-        /* --- PROGRESS BARS --- */
-        .progress-bar { height: 4px; background: var(--border); border-radius: 10px; margin: 15px 0 25px; overflow: hidden; }
-        .progress-inner { height: 100%; background: var(--primary); width: 0; transition: width 1.5s ease-out; }
-
-        footer { border-top: 1px solid var(--border); padding: 100px 20px; text-align: center; }
-
-        /* --- MOBILE --- */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .exp-item { grid-template-columns: 1fr; gap: 10px; }
-            .hero h1 { font-size: 4rem; }
+            .bento-grid { display: flex; flex-direction: column; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <div style="font-weight: 800; font-family: 'JetBrains Mono'; color: var(--primary);">PR_</div>
+    <div style="font-weight: 800; letter-spacing: -1px; font-size: 1.2rem;">PAULA RUIZ.</div>
     <div class="nav-links">
         <a href="#perfil" data-section="nav1">Perfil</a>
         <a href="#experiencia" data-section="nav2">Trayectoria</a>
-        <a href="#skills" data-section="nav3">Stack</a>
+        <a href="#skills" data-section="nav3">Tecnologías</a>
         <a href="#proyectos" data-section="nav5">Proyectos</a>
-        <a href="mailto:ruizgardonpaula@gmail.com" style="color: var(--primary);">Contacto</a>
+        <a href="#educacion" data-section="nav4">Formación</a>
     </div>
-    <div style="display: flex; gap: 8px;">
-        <button class="lang-btn active" onclick="setLanguage('es')">ES</button>
-        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    <div style="display: flex; align-items: center;">
+        <div class="lang-control">
+            <button class="lang-btn active" onclick="setLanguage('es')">ES</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        </div>
+        <a href="mailto:ruizgardonpaula@gmail.com" style="border: 1px solid var(--fg); padding: 8px 15px; font-size: 0.7rem; text-decoration: none; color: var(--fg); font-weight: 700;">CONTACTO</a>
     </div>
 </nav>
 
 <header class="hero">
     <img src="perfil.jpg" alt="Paula Ruiz" class="profile-photo">
-    <span class="section-label" data-section="hero_tag">Cybersecurity, IA & Software Engineer</span>
-    <h1 data-section="hero_h1">PAULA <span>RUIZ</span></h1>
-    <p data-section="hero_p">Soluciones técnicas en la intersección de la inteligencia artificial y la seguridad ofensiva.</p>
-    <div style="margin-top: 40px; display: flex; gap: 25px;">
-        <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank" style="color: var(--text-dim); font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/pauruigar6" target="_blank" style="color: var(--text-dim); font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+    <span class="section-label" data-section="hero_tag" style="margin-top: 30px;">Cybersecurity, IA & Software Engineer</span>
+    <h1 data-section="hero_h1">Paula <span>Ruiz</span></h1>
+    <p data-section="hero_p">Sólida base académica en IA y Software. <br> Experiencia operativa en Ciberseguridad corporativa.</p>
+    <div style="margin-top: 30px; display: flex; gap: 25px;">
+        <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank" style="color: var(--fg); font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:ruizgardonpaula@gmail.com" style="color: var(--fg); font-size: 1.2rem;"><i class="far fa-envelope"></i></a>
     </div>
 </header>
 
 <div class="container" id="perfil">
-    <div class="bento-grid">
-        <div class="bento-card" style="grid-column: span 12;">
-            <span class="section-label" data-section="label1">01. Sobre mí</span>
-            <h2 data-section="h2_1">Arquitectura de Software & Resiliencia Digital</h2>
-            <p style="font-size: 1.4rem; line-height: 1.6; color: var(--text-dim); max-width: 800px;" data-section="p_intro">
-                Ingeniera Informática enfocada en resolver problemas complejos mediante **IA** y asegurar activos mediante **Ciberseguridad**. 
-                Mi enfoque une el rigor académico con la agilidad operativa en entornos SOC e IAM.
-            </p>
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 50px; align-items: start;">
+        <div>
+            <span class="section-label">Introducción</span>
+            <h2 data-section="h2_1">Perfil Profesional</h2>
+        </div>
+        <p style="font-size: 1.3rem; line-height: 1.8; color: var(--text-muted); margin-top: 0;" data-section="p_intro">
+            Ingeniera Informática interesada en la intersección de la <strong>IA</strong> y la <strong>Ciberseguridad</strong>. 
+            Cuento con una base académica centrada en el desarrollo de software y el análisis de datos, 
+            complementada con experiencia operativa en entornos de soporte y monitorización (SOC/IAM).
+            <br><br>
+            En constante aprendizaje para aplicar soluciones técnicas eficientes en entornos profesionales.
+        </p>
+    </div>
+</div>
+
+<div class="container" id="experiencia" style="background: var(--surface); border-radius: 30px;">
+    <span class="section-label">Experiencia</span>
+    <h2 data-section="h2_2">Trayectoria Operativa</h2>
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <span class="company">Atlantica Sustainable Infrastructure</span>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+                <h4 style="margin: 5px 0;" data-section="job1_title">Analista de Ciberseguridad IT</h4>
+                <span style="font-family: 'JetBrains Mono'; font-size: 0.8rem;" data-section="date1">2026 — Presente</span>
+            </div>
+            <ul style="color: var(--text-muted); padding-left: 20px;" data-section="job1_list">
+                <li>Monitorización de alertas y soporte en respuesta ante incidentes.</li>
+                <li>Colaboración activa en mitigación de campañas de Phishing.</li>
+                <li>Revisión de configuraciones bajo Best Practices de seguridad.</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <span class="company">Avanade Spain S.L.U.</span>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+                <h4 style="margin: 5px 0;" data-section="job2_title">Consultora de Seguridad</h4>
+                <span style="font-family: 'JetBrains Mono'; font-size: 0.8rem;" data-section="date2">Marzo 2025 — Sept. 2025</span>
+            </div>
+            <ul style="color: var(--text-muted); padding-left: 20px;" data-section="job2_list">
+                <li>Gestión de Identidad (IAM) en entornos Azure AD.</li>
+                <li>Aplicación de System Hardening y políticas de seguridad Microsoft.</li>
+                <li>Elaboración de documentación técnica y gobernanza.</li>
+            </ul>
         </div>
     </div>
 </div>
 
-<div class="container" id="experiencia">
-    <span class="section-label" data-section="label2">02. Experiencia</span>
-    <h2 data-section="h2_2">Trayectoria</h2>
+<div class="container" id="skills">
+    <span class="section-label">Stack</span>
+    <h2 data-section="h2_3">Tecnologías</h2>
     
-    <div class="exp-item">
-        <div class="exp-date" data-section="date1">2026 — Actualidad</div>
-        <div class="exp-content">
-            <h4 data-section="job1_title">Analista de Ciberseguridad IT</h4>
-            <span class="company">Atlantica Sustainable Infrastructure</span>
-            <div data-section="job1_list" style="color: var(--text-dim);">
-                Monitorización avanzada de alertas, mitigación de phishing y gobernanza bajo Best Practices.
+    <div class="bento-grid">
+        <div class="bento-card" style="grid-column: span 6;">
+            <h3 data-section="skill_ciber">Ciberseguridad</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span class="tag">Microsoft 365 Security</span> <span class="tag">Azure AD</span> <span class="tag">IAM</span>
+                <span class="tag">Hardening</span> <span class="tag">Burp Suite</span> <span class="tag">OWASP</span>
             </div>
         </div>
-    </div>
-
-    <div class="exp-item">
-        <div class="exp-date" data-section="date2">2025 (6 meses)</div>
-        <div class="exp-content">
-            <h4 data-section="job2_title">Consultora de Seguridad</h4>
-            <span class="company">Avanade Spain S.L.U.</span>
-            <div data-section="job2_list" style="color: var(--text-dim);">
-                Gestión de identidades en Azure AD, System Hardening y cumplimiento normativo.
+        <div class="bento-card" style="grid-column: span 6;">
+            <h3 data-section="skill_ia">IA & Data Science</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span class="tag">Python</span> <span class="tag">Pandas</span> <span class="tag">Scikit-learn</span>
+                <span class="tag">Machine Learning</span> <span class="tag">Deep Learning</span>
+            </div>
+        </div>
+        <div class="bento-card" style="grid-column: span 8;">
+            <h3 data-section="skill_dev">Desarrollo</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span class="tag">Java</span> <span class="tag">React Native</span> <span class="tag">JavaScript</span>
+                <span class="tag">HTML5/CSS3</span> <span class="tag">Git</span>
+            </div>
+        </div>
+        <div class="bento-card" style="grid-column: span 4;">
+            <h3 data-section="skill_sys">Sistemas</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span class="tag">Linux</span> <span class="tag">Windows Server</span> <span class="tag">VirtualBox</span>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container" id="proyectos">
-    <span class="section-label" data-section="label_proj">03. Portfolio</span>
+    <span class="section-label">Portfolio</span>
     <h2 data-section="h2_proj">Proyectos Seleccionados</h2>
     
     <div class="project-grid">
         <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-front">
-                    <i class="fas fa-microchip" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <div class="flip-card-front">
+                    <i class="fas fa-microchip" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;"></i>
                     <h3 data-section="proj1_title">TFG: Automatización VM</h3>
-                    <div class="tag-container" style="display: flex; gap: 5px; margin-top: 15px;">
-                        <span class="tag">Python</span><span class="tag">KVM</span>
-                    </div>
+                    <p style="font-size: 0.8rem; opacity: 0.6;">Hover para más info</p>
                 </div>
-                <div class="flip-back">
-                    <h3 data-section="proj1_title">Automatización VM</h3>
-                    <p data-section="proj1_desc">Extensión integrable con Virt-Manager para automatizar la creación de máquinas virtuales desde plantillas y gestión libvirt.</p>
-                    <a href="https://github.com/pauruigar6" target="_blank" style="color: #0a0a0a; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                <div class="flip-card-back">
+                    <p data-section="proj1_desc">Extensión para Virt-Manager que automatiza la creación de máquinas virtuales desde plantillas y gestión de pools libvirt.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="tag">Python</span> <span class="tag">KVM</span> <span class="tag">Libvirt</span>
+                    </div>
+                    <a href="https://github.com/pauruigar6" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </div>
-
         <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-front">
-                    <i class="fas fa-house-chimney-user" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <div class="flip-card-front">
+                    <i class="fas fa-users-gear" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;"></i>
                     <h3 data-section="proj2_title">Whizzy App</h3>
-                    <div class="tag-container" style="display: flex; gap: 5px; margin-top: 15px;">
-                        <span class="tag">React Native</span><span class="tag">Expo</span>
-                    </div>
+                    <p style="font-size: 0.8rem; opacity: 0.6;">Hover para más info</p>
                 </div>
-                <div class="flip-back">
-                    <h3 data-section="proj2_title">Whizzy App</h3>
-                    <p data-section="proj2_desc">App colaborativa para gestión de tareas domésticas con sistema de puntos, ranking y despliegue multiplataforma.</p>
-                    <a href="https://github.com/pauruigar6/Whizzy" target="_blank" style="color: #0a0a0a; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                <div class="flip-card-back">
+                    <p data-section="proj2_desc">App colaborativa para gestión de tareas domésticas con gamificación, ranking de puntos y despliegue multiplataforma.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="tag">React Native</span> <span class="tag">Expo</span>
+                    </div>
+                    <a href="https://github.com/pauruigar6/Whizzy" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </div>
-
         <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-front">
-                    <i class="fas fa-heartbeat" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <div class="flip-card-front">
+                    <i class="fas fa-file-medical" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;"></i>
                     <h3 data-section="proj3_title">CareMonitor-IPe2</h3>
-                    <div class="tag-container" style="display: flex; gap: 5px; margin-top: 15px;">
-                        <span class="tag">Firebase</span><span class="tag">eHealth</span>
+                    <p style="font-size: 0.8rem; opacity: 0.6;">Hover para más info</p>
+                </div>
+                <div class="flip-card-back">
+                    <p data-section="proj3_desc">Aplicación eHealth para gestión de datos de salud con persistencia en Firebase e integración de multimedia.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="tag">JavaScript</span> <span class="tag">Firebase</span>
                     </div>
+                    <a href="https://github.com/pauruigar6/CareMonitor-IPe2" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
                 </div>
-                <div class="flip-back">
-                    <h3 data-section="proj3_title">CareMonitor</h3>
-                    <p data-section="proj3_desc">Aplicación eHealth para la gestión de datos de salud, con integración de audio, fotos y persistencia en Firebase.</p>
-                    <a href="https://github.com/pauruigar6/CareMonitor-IPe2" target="_blank" style="color: #0a0a0a; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <i class="fas fa-city" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;"></i>
+                    <h3 data-section="proj4_title">Seville Website</h3>
+                    <p style="font-size: 0.8rem; opacity: 0.6;">Hover para más info</p>
+                </div>
+                <div class="flip-card-back">
+                    <p data-section="proj4_desc">Plataforma visual interactiva sobre Sevilla con diseño responsive y transiciones dinámicas.</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <span class="tag">HTML5</span> <span class="tag">CSS3</span> <span class="tag">JS</span>
+                    </div>
+                    <a href="https://github.com/pauruigar6/WebDesign" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container" id="skills">
-    <div class="bento-grid">
-        <div class="bento-card" style="grid-column: span 6;">
-            <h3 data-section="skill_ciber"><i class="fas fa-shield-halved"></i> Ciberseguridad</h3>
-            <div class="tag-container" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;">
-                <span class="tag">Microsoft 365 Security</span> <span class="tag">Azure AD</span> <span class="tag">IAM</span>
-                <span class="tag">System Hardening</span> <span class="tag">Burp Suite</span> <span class="tag">Nmap</span>
-                <span class="tag">OWASP</span>
+<div class="container" id="educacion">
+    <span class="section-label">Formación</span>
+    <h2 data-section="h2_4">Preparación Académica</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <div class="bento-card">
+            <span class="company" style="font-size: 0.8rem;">2025 — 2026</span>
+            <h4 data-section="edu1_title" style="margin: 10px 0;">Máster Ciberseguridad e IA</h4>
+            <p style="margin: 0; font-size: 0.9rem;">CEI – Centro de Estudios e Innovación</p>
+        </div>
+        <div class="bento-card">
+            <span class="company" style="font-size: 0.8rem;">2021 — 2025</span>
+            <h4 data-section="edu2_title" style="margin: 10px 0;">Grado Ingeniería Informática (TI)</h4>
+            <p style="margin: 0; font-size: 0.9rem;">Universidad de Sevilla</p>
+            <p style="color: var(--accent); font-size: 0.75rem; margin-top: 10px;" data-section="edu2_sub">Erasmus+ en Brno Tech, Rep. Checa</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+        <div>
+            <h3 data-section="cert_title" style="font-size: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Certificaciones</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
+                <span class="tag">Google Cybersecurity</span> <span class="tag">Python Essentials</span>
+                <span class="tag">Cisco Intro Security</span> <span class="tag">Nanotraining IA</span>
             </div>
         </div>
-        <div class="bento-card" style="grid-column: span 6;">
-            <h3 data-section="skill_ia"><i class="fas fa-brain"></i> IA & Data Science</h3>
-            <div class="tag-container" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;">
-                <span class="tag">Python</span> <span class="tag">Pandas/NumPy</span> <span class="tag">Scikit-learn</span>
-                <span class="tag">XGBoost</span> <span class="tag">Machine Learning</span> <span class="tag">Deep Learning</span>
+        <div>
+            <h3 style="font-size: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Idiomas</h3>
+            <div style="margin-top: 15px; font-size: 0.9rem;">
+                <div style="margin-bottom: 10px;">ES <span style="float: right; font-weight: 700;" data-section="lang_native">Nativo</span></div>
+                <div style="margin-bottom: 10px;">EN <span style="float: right; font-weight: 700;">B2 Cambridge</span></div>
+                <div>DE <span style="float: right; font-weight: 700;">A1/A2</span></div>
             </div>
         </div>
     </div>
 </div>
 
-<footer>
-    <h2 data-section="footer_h2">¿Construimos algo seguro?</h2>
-    <p style="color: var(--text-dim);">Sevilla, España &bull; ruizgardonpaula@gmail.com</p>
-    <div style="margin-top: 50px; font-family: 'JetBrains Mono'; font-size: 0.7rem; opacity: 0.3;">
-        2026 &copy; PAULA RUIZ - CODED WITH PASSION
+<footer id="contacto">
+    <div class="container">
+        <h2 data-section="footer_h2">¿Creamos algo seguro juntos?</h2>
+        <p style="opacity: 0.7;">Sevilla, España</p>
+        <a href="mailto:ruizgardonpaula@gmail.com" style="color: var(--accent); font-size: 1.5rem; text-decoration: none; font-weight: 800;">ruizgardonpaula@gmail.com</a>
+        <div style="margin-top: 60px; font-family: 'JetBrains Mono'; font-size: 0.7rem; opacity: 0.4;">
+            © 2026 PAULA RUIZ | INTERACTIVE PORTFOLIO
+        </div>
     </div>
 </footer>
 
 <script>
     const translations = {
         es: {
-            nav1: "Perfil", nav2: "Trayectoria", nav3: "Stack", nav5: "Proyectos",
+            nav1: "Perfil", nav2: "Trayectoria", nav3: "Tecnologías", nav4: "Formación", nav5: "Proyectos",
             hero_tag: "Cybersecurity, IA & Software Engineer",
-            hero_h1: "PAULA <span>RUIZ</span>",
-            hero_p: "Soluciones técnicas en la intersección de la inteligencia artificial y la seguridad ofensiva.",
-            label1: "01. Sobre mí", h2_1: "Arquitectura de Software & Resiliencia Digital",
-            p_intro: "Ingeniera Informática enfocada en resolver problemas complejos mediante <strong>IA</strong> y asegurar activos mediante <strong>Ciberseguridad</strong>. Mi enfoque une el rigor académico con la agilidad operativa.",
-            label2: "02. Experiencia", h2_2: "Trayectoria",
-            date1: "2026 — Actualidad", job1_title: "Analista de Ciberseguridad IT",
-            job1_list: "Monitorización avanzada de alertas, mitigación de phishing y gobernanza bajo Best Practices.",
-            date2: "2025 (6 meses)", job2_title: "Consultora de Seguridad",
-            job2_list: "Gestión de identidades en Azure AD, System Hardening y cumplimiento normativo.",
-            label_proj: "03. Portfolio", h2_proj: "Proyectos Seleccionados",
-            proj1_title: "TFG: Automatización VM", proj1_desc: "Extensión para Virt-Manager que automatiza la creación de VMs mediante plantillas y libvirt.",
-            proj2_title: "Whizzy App", proj2_desc: "Gestión colaborativa de tareas con gamificación y ranking en tiempo real.",
-            proj3_title: "CareMonitor-IPe2", proj3_desc: "Ecosistema eHealth con Firebase y procesamiento de medios.",
-            skill_ciber: "Ciberseguridad", skill_ia: "IA & Data Science",
-            footer_h2: "¿Construimos algo seguro?"
+            hero_h1: "Paula <span>Ruiz</span>",
+            hero_p: "Sólida base académica en IA y Software. <br> Experiencia operativa en Ciberseguridad corporativa.",
+            h2_1: "Perfil Profesional",
+            p_intro: "Ingeniera Informática interesada en la intersección de la <strong>IA</strong> y la <strong>Ciberseguridad</strong>. Cuento con una base académica centrada en el desarrollo de software y el análisis de datos, complementada con experiencia operativa en entornos de soporte y monitorización (SOC/IAM). <br><br> En constante aprendizaje para aplicar soluciones técnicas eficientes en entornos profesionales.",
+            h2_2: "Trayectoria Operativa",
+            date1: "2026 — Presente", job1_title: "Analista de Ciberseguridad IT",
+            job1_list: "<li>Monitorización de alertas y soporte en respuesta ante incidentes.</li><li>Colaboración activa en mitigación de campañas de Phishing.</li><li>Revisión de configuraciones bajo Best Practices de seguridad.</li>",
+            date2: "Marzo 2025 — Sept. 2025", job2_title: "Consultora de Seguridad",
+            job2_list: "<li>Gestión de Identidad (IAM) en entornos Azure AD.</li><li>Aplicación de System Hardening y políticas de seguridad Microsoft.</li><li>Elaboración de documentación técnica y gobernanza.</li>",
+            h2_3: "Tecnologías",
+            skill_ciber: "Ciberseguridad", skill_ia: "IA & Data Science", skill_dev: "Desarrollo", skill_sys: "Sistemas",
+            h2_proj: "Proyectos Seleccionados",
+            proj1_title: "TFG: Automatización VM", proj1_desc: "Extensión para Virt-Manager que automatiza la creación de máquinas virtuales desde plantillas y gestión de pools libvirt.",
+            proj2_title: "Whizzy App", proj2_desc: "App colaborativa para gestión de tareas domésticas con gamificación y ranking de puntos.",
+            proj3_title: "CareMonitor-IPe2", proj3_desc: "Aplicación eHealth para gestión de datos de salud con persistencia en Firebase.",
+            proj4_title: "Seville Website", proj4_desc: "Plataforma visual interactiva sobre Sevilla con diseño responsive y transiciones dinámicas.",
+            h2_4: "Preparación Académica",
+            edu1_title: "Máster Ciberseguridad e IA", edu2_title: "Grado Ingeniería Informática (TI)", edu2_sub: "Erasmus+ en Brno Tech, Rep. Checa",
+            cert_title: "Certificaciones", lang_native: "Nativo",
+            footer_h2: "¿Creamos algo seguro juntos?"
         },
         en: {
-            nav1: "Profile", nav2: "Career", nav3: "Stack", nav5: "Projects",
+            nav1: "Profile", nav2: "History", nav3: "Tech Stack", nav4: "Education", nav5: "Projects",
             hero_tag: "Cybersecurity, AI & Software Engineer",
-            hero_h1: "PAULA <span>RUIZ</span>",
-            hero_p: "Technical solutions at the intersection of artificial intelligence and offensive security.",
-            label1: "01. About me", h2_1: "Software Architecture & Digital Resilience",
-            p_intro: "Computer Engineer focused on solving complex problems through <strong>AI</strong> and securing assets through <strong>Cybersecurity</strong>.",
-            label2: "02. Experience", h2_2: "Career Path",
+            hero_h1: "Paula <span>Ruiz</span>",
+            hero_p: "Solid academic background in AI and Software. <br> Operational experience in corporate Cybersecurity.",
+            h2_1: "Professional Profile",
+            p_intro: "Computer Engineer interested in the intersection of <strong>AI</strong> and <strong>Cybersecurity</strong>. I have an academic base focused on software development and data analysis, complemented by operational experience in support and monitoring (SOC/IAM). <br><br> Constantly learning to apply efficient technical solutions in professional environments.",
+            h2_2: "Operational History",
             date1: "2026 — Present", job1_title: "IT Cybersecurity Analyst",
-            job1_list: "Advanced alert monitoring, phishing mitigation and Governance under Best Practices.",
-            date2: "2025 (6 months)", job2_title: "Security Consultant",
-            job2_list: "Identity management in Azure AD, System Hardening and compliance.",
-            label_proj: "03. Portfolio", h2_proj: "Featured Projects",
-            proj1_title: "Thesis: VM Automation", proj1_desc: "Virt-Manager extension for automated VM creation via templates and libvirt.",
-            proj2_title: "Whizzy App", proj2_desc: "Collaborative task management with gamification and real-time ranking.",
-            proj3_title: "CareMonitor-IPe2", proj3_desc: "eHealth ecosystem with Firebase and media processing.",
-            skill_ciber: "Cybersecurity", skill_ia: "AI & Data Science",
-            footer_h2: "Let's build something secure?"
+            job1_list: "<li>Alert monitoring and incident response support.</li><li>Active collaboration in Phishing mitigation.</li><li>Configuration review and security Best Practices application.</li>",
+            date2: "March 2025 — Sept. 2025", job2_title: "Security Consultant",
+            job2_list: "<li>Identity Management (IAM) in Azure AD environments.</li><li>System Hardening and Microsoft security policies application.</li><li>Technical documentation and governance support.</li>",
+            h2_3: "Tech Stack",
+            skill_ciber: "Cybersecurity", skill_ia: "AI & Data Science", skill_dev: "Development", skill_sys: "Systems",
+            h2_proj: "Featured Projects",
+            proj1_title: "Thesis: VM Automation", proj1_desc: "Virt-Manager extension to automate VM creation from templates and libvirt management.",
+            proj2_title: "Whizzy App", proj2_desc: "Collaborative household task management app with gamification and points ranking.",
+            proj3_title: "CareMonitor-IPe2", proj3_desc: "eHealth app for health data management with Firebase persistence.",
+            proj4_title: "Seville Website", proj4_desc: "Visual interactive platform about Seville with responsive design and dynamic transitions.",
+            h2_4: "Academic Background",
+            edu1_title: "Master in Cybersecurity & AI", edu2_title: "BEng in Computer Science", edu2_sub: "Erasmus+ at Brno Tech, Czech Republic",
+            cert_title: "Certifications", lang_native: "Native",
+            footer_h2: "Let's build something secure together?"
         }
     };
 
@@ -349,8 +431,10 @@
             const key = el.getAttribute('data-section');
             if (translations[lang][key]) el.innerHTML = translations[lang][key];
         });
+
         document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+            btn.classList.remove('active');
+            if (btn.innerText.toLowerCase() === lang) btn.classList.add('active');
         });
     }
 </script>
