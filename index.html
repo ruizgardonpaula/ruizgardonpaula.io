@@ -10,7 +10,7 @@
     
     <style>
         :root {
-            /* Paleta de Colores: Mantenida intacta */
+            /* Paleta de Colores Intacta */
             --bg-body: #f3f2ee; 
             --bg-card: #ffffff; 
             --text-main: #1d1d1f; 
@@ -19,13 +19,13 @@
             --accent-light: #f9ecea; 
             --border: #e5e5ea;
             
-            /* Nuevas variables de estilo profesional */
+            /* Geometría Profesional */
             --radius-card: 16px;
             --radius-btn: 8px;
             --radius-pill: 12px;
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
-            --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+            --shadow-md: 0 12px 32px rgba(0,0,0,0.08);
         }
 
         /* Reset y Base */
@@ -46,16 +46,16 @@
         ::-webkit-scrollbar-thumb { background: #d1d1d6; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-        /* NAVEGACIÓN GLASSMORPHISM - Estilo más corporativo */
+        /* NAVEGACIÓN GLASSMORPHISM */
         nav {
             position: fixed;
             top: 20px; left: 50%;
             transform: translateX(-50%);
-            width: 90%; max-width: 1000px;
-            background: rgba(255, 255, 255, 0.75);
+            width: 90%; max-width: 1100px;
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: var(--radius-pill);
             z-index: 1000;
             padding: 12px 30px;
@@ -65,169 +65,209 @@
         }
         .nav-logo { font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--text-main); }
         .nav-logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; transition: var(--transition); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; transition: var(--transition); }
         .nav-links a:hover { color: var(--text-main); }
 
         .controls-container { display: flex; align-items: center; gap: 15px; }
-        .lang-control { display: flex; gap: 8px; border-right: 1px solid var(--border); padding-right: 15px; }
+        .lang-control { display: flex; gap: 10px; border-right: 1px solid var(--border); padding-right: 15px; }
         .lang-btn { background: none; border: none; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 0.8rem; font-weight: 500; color: var(--text-muted); transition: 0.3s; }
         .lang-btn.active { color: var(--accent); font-weight: 700; }
         
         .contact-btn {
             background: var(--text-main); color: var(--bg-card);
-            padding: 8px 20px; border-radius: var(--radius-btn); text-decoration: none;
+            padding: 8px 24px; border-radius: var(--radius-btn); text-decoration: none;
             font-size: 0.85rem; font-weight: 600; transition: var(--transition);
         }
         .contact-btn:hover { background: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 
-        /* HERO SECTION */
-        .hero {
+        /* CONTAINERS & TYPOGRAPHY GLOBALES */
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+        h2 { font-size: 2.6rem; font-weight: 700; margin-bottom: 40px; letter-spacing: -0.03em; color: var(--text-main); }
+
+        /* HERO SECTION - Rediseño Alineado a Izquierda con Foto a Derecha */
+        .hero-container {
             min-height: 100vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; 
-            padding: 120px 20px 60px 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            padding-top: 120px;
+            padding-bottom: 60px;
+            gap: 60px;
+        }
+        
+        .hero-content {
+            flex: 1;
+            max-width: 650px;
+            text-align: left;
+        }
+        
+        .tag-hero { display: inline-block; font-family: 'JetBrains Mono', monospace; color: var(--accent); background: var(--accent-light); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 25px; }
+        .hero-content h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 700; letter-spacing: -0.04em; margin: 0; line-height: 1.05; color: var(--text-main); }
+        .hero-content h1 span { color: var(--text-muted); font-weight: 400; font-style: italic; }
+        .hero-content p { font-size: 1.25rem; color: var(--text-muted); margin: 30px 0; font-weight: 400; line-height: 1.6; }
+        .hero-content p strong { color: var(--text-main); font-weight: 600; }
+
+        .hero-social-links { display: flex; gap: 20px; margin-top: 10px; }
+        .hero-social-links a { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--border); color: var(--text-main); font-size: 1.2rem; transition: var(--transition); background: var(--bg-card); }
+        .hero-social-links a:hover { background: var(--text-main); color: var(--bg-card); border-color: var(--text-main); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+
+        .hero-image-wrapper {
+            flex-shrink: 0;
+            width: 380px;
+            height: 500px;
             position: relative;
         }
-        .hero::before { 
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.6) 0%, transparent 70%);
-            z-index: -1;
+        
+        .hero-image-wrapper::after {
+            content: ''; position: absolute; top: 20px; left: -20px; width: 100%; height: 100%;
+            border: 2px solid var(--border); border-radius: 24px; z-index: -1; transition: var(--transition);
         }
+        .hero-image-wrapper:hover::after { top: 10px; left: -10px; border-color: var(--accent); }
 
         .profile-photo {
-            width: 160px; height: 160px;
-            border-radius: var(--radius-card); 
+            width: 100%; height: 100%;
             object-fit: cover;
-            border: 4px solid var(--bg-card);
+            border-radius: 24px;
             box-shadow: var(--shadow-md);
-            margin-bottom: 30px;
-            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            filter: grayscale(10%) contrast(1.05); /* Toque sutilmente cinemático */
         }
-        .profile-photo:hover { transform: translateY(-5px); border-color: var(--accent-light); }
-
-        .tag-hero { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
-        .hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 700; letter-spacing: -0.03em; margin: 0; line-height: 1.1; color: var(--text-main); }
-        .hero h1 span { color: var(--text-muted); font-weight: 400; font-style: italic; }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 25px 0; font-weight: 400; line-height: 1.6; }
-        .hero p strong { color: var(--text-main); font-weight: 600; }
-
-        .social-links a { color: var(--text-main); font-size: 1.3rem; margin: 0 12px; transition: var(--transition); display: inline-block; }
-        .social-links a:hover { color: var(--accent); transform: translateY(-3px); }
-
-        /* CONTAINERS & TYPOGRAPHY */
-        .container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
-        h2 { font-size: 2.4rem; font-weight: 700; margin-bottom: 40px; letter-spacing: -0.02em; color: var(--text-main); }
 
         /* TARJETAS BASE */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-card);
-            padding: 35px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-        .card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-
-        /* TAGS */
-        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: var(--bg-body); padding: 6px 14px; border-radius: var(--radius-btn); font-size: 0.8rem; font-weight: 600; color: var(--text-main); transition: 0.3s; }
-        .tag:hover { background: var(--accent-light); color: var(--accent); }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 40px; box-shadow: var(--shadow-sm); transition: var(--transition); }
+        .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
         /* PERFIL (Intro) */
-        .profile-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: center; }
-        .profile-text { font-size: 1.05rem; line-height: 1.8; color: var(--text-muted); }
+        .profile-grid { display: grid; grid-template-columns: 1fr 1.8fr; gap: 50px; align-items: stretch; }
+        .profile-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); }
         .profile-text strong { color: var(--text-main); font-weight: 600; }
         .profile-text .highlight { color: var(--accent); font-weight: 600; }
+        .profile-icon-box { background: var(--bg-body); border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); }
 
-        /* EXPERIENCIA (Timeline elegante) */
-        .timeline { position: relative; margin-top: 10px; }
-        .timeline::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 0; width: 1px; background: var(--border); }
-        .timeline-item { position: relative; padding-left: 35px; margin-bottom: 40px; }
+        /* EXPERIENCIA (Timeline Profesional) */
+        .timeline { position: relative; padding-left: 30px; }
+        .timeline::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 0; width: 2px; background: var(--border); }
+        .timeline-item { position: relative; margin-bottom: 45px; }
         .timeline-item:last-child { margin-bottom: 0; }
         .timeline-item::before {
-            content: ""; position: absolute; left: -5px; top: 6px; width: 11px; height: 11px;
-            border-radius: 50%; background: var(--accent); outline: 3px solid var(--bg-card); transition: var(--transition);
+            content: ""; position: absolute; left: -36px; top: 6px; width: 14px; height: 14px;
+            border-radius: 50%; background: var(--bg-card); border: 3px solid var(--accent); transition: var(--transition);
         }
-        .timeline-item:hover::before { transform: scale(1.2); background: var(--text-main); }
-        .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; display: block; }
-        .timeline-title { font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 3px; }
-        .timeline-company { font-size: 0.95rem; color: var(--accent); font-weight: 500; margin-bottom: 15px; display: inline-block; }
-        .timeline-list { list-style: none; color: var(--text-muted); font-size: 0.95rem; }
-        .timeline-list li { margin-bottom: 8px; position: relative; padding-left: 18px; }
-        .timeline-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .timeline-item:hover::before { background: var(--accent); transform: scale(1.2); }
+        .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-bottom: 8px; display: block; }
+        .timeline-title { font-size: 1.35rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+        .timeline-company { font-size: 1rem; color: var(--accent); font-weight: 600; margin-bottom: 15px; display: inline-block; }
+        .timeline-list { list-style: none; color: var(--text-muted); font-size: 1rem; }
+        .timeline-list li { margin-bottom: 10px; position: relative; padding-left: 20px; }
+        .timeline-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; }
 
-        /* BENTO GRID SKILLS */
-        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .bento-item { display: flex; flex-direction: column; gap: 15px; padding: 25px; }
-        .bento-item h3 { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; margin: 0; }
-        .bento-item i { color: var(--accent); font-size: 1.2rem; background: var(--accent-light); padding: 10px; border-radius: 10px; }
+        /* TECNOLOGÍAS - CARRUSEL INFINITO LOGOS */
+        .skills-header-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+        .skills-category { font-size: 0.95rem; font-weight: 600; color: var(--text-main); border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        .skills-category i { color: var(--accent); margin-right: 8px; }
 
-        /* PROYECTOS: SLIDE CARDS INTERACTIVAS (Rediseño profesional) */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .carousel-wrapper {
+            position: relative;
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            padding: 20px 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            gap: 30px;
+            padding: 0 15px;
+        }
+
+        .track-left { animation: scroll-left 40s linear infinite; }
+        .track-right { animation: scroll-right 45s linear infinite; margin-top: 25px; }
+
+        .carousel-wrapper:hover .carousel-track { animation-play-state: paused; }
+
+        @keyframes scroll-left { 
+            from { transform: translateX(0); } 
+            to { transform: translateX(-50%); } 
+        }
+        @keyframes scroll-right { 
+            from { transform: translateX(-50%); } 
+            to { transform: translateX(0); } 
+        }
+
+        .tech-badge {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 24px;
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 1rem; font-weight: 600; color: var(--text-main);
+            transition: var(--transition);
+            white-space: nowrap;
+            cursor: default;
+        }
+        .tech-badge i { font-size: 1.4rem; color: var(--text-muted); transition: 0.3s; }
+        .tech-badge:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+        .tech-badge:hover i { color: var(--accent); }
+
+        /* PROYECTOS: SLIDE CARDS */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
         .flip-card {
-            background-color: transparent;
-            height: 360px;
-            cursor: pointer;
-            border-radius: var(--radius-card);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            position: relative;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+            background-color: transparent; height: 380px; cursor: pointer;
+            border-radius: var(--radius-card); overflow: hidden;
+            border: 1px solid var(--border); position: relative;
+            box-shadow: var(--shadow-sm); transition: var(--transition);
         }
         .flip-card:hover { box-shadow: var(--shadow-md); transform: translateY(-5px); }
-        
         .flip-card-inner { position: relative; width: 100%; height: 100%; }
         
         .flip-card-front {
-            position: absolute; width: 100%; height: 100%;
-            padding: 35px;
-            background: var(--bg-card);
-            display: flex; flex-direction: column;
-            transition: opacity 0.4s ease;
-            z-index: 1;
+            position: absolute; width: 100%; height: 100%; padding: 40px;
+            background: var(--bg-card); display: flex; flex-direction: column; z-index: 1;
         }
-        .flip-card-front .icon { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
-        .flip-card-front h3 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 700;}
-        .flip-card-front p { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; }
-        .flip-card-front .flip-indicator { font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: 5px; }
+        .flip-card-front .icon { font-size: 2.2rem; color: var(--accent); margin-bottom: 25px; }
+        .flip-card-front h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 700;}
+        .flip-card-front p { color: var(--text-muted); font-size: 1rem; flex-grow: 1; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: var(--bg-body); padding: 6px 14px; border-radius: var(--radius-btn); font-size: 0.8rem; font-weight: 600; color: var(--text-main); }
+        .flip-card-front .flip-indicator { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: 5px; }
         
         .flip-card-back { 
-            position: absolute; width: 100%; height: 100%;
-            padding: 35px;
+            position: absolute; width: 100%; height: 100%; padding: 40px;
             background: var(--text-main); color: var(--bg-card); 
-            display: flex; flex-direction: column;
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-            z-index: 2;
+            display: flex; flex-direction: column; transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); z-index: 2;
         }
         .flip-card:hover .flip-card-back { transform: translateY(0); }
-        
-        .flip-card-back h3 { color: var(--bg-card); font-size: 1.2rem; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
-        .flip-card-back p { font-size: 0.9rem; color: #a1a1a6; margin-bottom: 20px; line-height: 1.6; }
+        .flip-card-back h3 { color: var(--bg-card); font-size: 1.3rem; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
+        .flip-card-back p { font-size: 0.95rem; color: #a1a1a6; margin-bottom: 20px; line-height: 1.6; }
         .flip-card-back .tag { background: rgba(255,255,255,0.1); color: var(--bg-card); border: 1px solid rgba(255,255,255,0.2); }
-        .flip-card-back .project-link { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+        .flip-card-back .project-link { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; color: var(--accent); text-decoration: none; font-weight: 600; transition: 0.3s; }
         .flip-card-back .project-link:hover { color: #ffffff; }
 
         /* EDUCACIÓN & IDIOMAS */
-        .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .edu-card { padding: 25px; margin-bottom: 20px;}
-        .edu-date { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--accent); font-weight: 500; }
-        .edu-title { font-size: 1.1rem; font-weight: 700; margin: 8px 0; }
+        .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .edu-card { padding: 30px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--bg-card); }
+        .edu-date { font-family: 'JetBrains Mono'; font-size: 0.85rem; color: var(--accent); font-weight: 600; display: block; margin-bottom: 5px; }
+        .edu-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
         
-        .progress-container { margin-top: 15px; }
-        .progress-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
-        .progress-label span:last-child { color: var(--text-muted); font-weight: 500; font-size: 0.8rem; }
-        .progress-bar { height: 4px; background: var(--border); border-radius: 10px; overflow: hidden; }
+        .progress-container { margin-top: 18px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
+        .progress-label span:last-child { color: var(--text-muted); font-weight: 500; font-size: 0.85rem; }
+        .progress-bar { height: 6px; background: var(--border); border-radius: 10px; overflow: hidden; }
         .progress-inner { height: 100%; background: var(--accent); border-radius: 10px; transition: width 1.5s ease-in-out; }
 
         /* FOOTER */
-        footer { background: var(--text-main); color: var(--bg-card); padding: 60px 20px; text-align: center; border-top-left-radius: 24px; border-top-right-radius: 24px; }
-        footer h2 { color: var(--bg-card); margin-bottom: 15px; font-size: 2rem; }
-        footer p { color: #a1a1a6; font-size: 1rem; margin-bottom: 5px; }
+        footer { background: var(--text-main); color: var(--bg-card); padding: 80px 20px 40px 20px; text-align: center; }
+        footer h2 { color: var(--bg-card); margin-bottom: 20px; font-size: 2.2rem; }
+        footer p { color: #a1a1a6; font-size: 1.1rem; margin-bottom: 5px; }
         footer a { color: var(--accent); text-decoration: none; font-weight: 500; transition: 0.3s; }
         footer a:hover { color: #fff; }
 
@@ -236,13 +276,19 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* RESPONSIVE */
-        @media (max-width: 900px) {
+        @media (max-width: 992px) {
+            .hero-container { flex-direction: column-reverse; text-align: center; gap: 40px; padding-top: 140px; }
+            .hero-content { text-align: center; }
+            .hero-social-links { justify-content: center; }
+            .hero-image-wrapper { width: 300px; height: 380px; }
             .profile-grid, .edu-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.8rem; }
-            nav { width: 95%; padding: 12px 20px; }
+            .skills-header-grid { grid-template-columns: 1fr 1fr; }
             .nav-links { display: none; }
-            .hero { padding-top: 140px; }
-            .profile-photo { width: 130px; height: 130px; }
+        }
+        @media (max-width: 600px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .skills-header-grid { grid-template-columns: 1fr; }
+            nav { width: 95%; padding: 12px 20px; }
         }
     </style>
 </head>
@@ -266,17 +312,21 @@
     </div>
 </nav>
 
-<header class="hero">
-    <img src="perfil.jpg" alt="Paula Ruiz" class="profile-photo" onerror="this.src='https://via.placeholder.com/160/f9ecea/c2695c?text=PR'">
+<header class="container hero-container">
+    <div class="hero-content">
+        <span class="tag-hero" data-lang="hero_tag">Software, AI & Cybersecurity Engineer</span>
+        <h1 data-lang="hero_h1">Paula <span>Ruiz</span></h1>
+        <p data-lang="hero_p">Ingeniera proactiva enfocada en la creación de <strong>Software y Soluciones IA</strong>. <br> Combinando una mentalidad ágil con experiencia técnica corporativa.</p>
+        
+        <div class="hero-social-links">
+            <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/pauruigar6" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:ruizgardonpaula@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
     
-    <span class="tag-hero" data-lang="hero_tag">Software, AI & Cybersecurity Engineer</span>
-    <h1 data-lang="hero_h1">Paula <span>Ruiz</span></h1>
-    <p data-lang="hero_p">Ingeniera proactiva enfocada en la creación de <strong>Software y Soluciones IA</strong>. <br> Combinando una mentalidad ágil con experiencia técnica corporativa.</p>
-    
-    <div class="social-links" style="margin-top: 10px;">
-        <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/pauruigar6" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:ruizgardonpaula@gmail.com"><i class="fas fa-envelope"></i></a>
+    <div class="hero-image-wrapper">
+        <img src="perfil.jpg" alt="Paula Ruiz" class="profile-photo" onerror="this.src='https://via.placeholder.com/400x500/f9ecea/1d1d1f?text=PR'">
     </div>
 </header>
 
@@ -289,10 +339,8 @@
                 <br><br>
                 Me considero una profesional sumamente <strong>proactiva, meticulosa y con una curva de aprendizaje acelerada</strong>. Mi motivación principal es continuar formándome sin descanso y aportar valor real en un entorno dinámico. Busco activamente nuevos retos donde explotar mi creatividad técnica, adaptarme a nuevas tecnologías y construir software inteligente, eficiente y seguro.
             </div>
-            <div>
-                <div style="background: var(--bg-body); border-radius: var(--radius-card); height: 100%; min-height: 220px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
-                    <i class="fas fa-code-branch" style="font-size: 4rem; color: var(--border);"></i>
-                </div>
+            <div class="profile-icon-box">
+                <i class="fas fa-terminal" style="font-size: 5rem; color: var(--border);"></i>
             </div>
         </div>
     </section>
@@ -326,44 +374,59 @@
         </div>
     </section>
 
-    <section class="container reveal" id="skills">
-        <h2 data-lang="h2_3">Aptitudes Técnicas</h2>
-        <div class="bento-grid">
-            <div class="card bento-item">
-                <h3 data-lang="skill_ia"><i class="fas fa-brain"></i> IA & Data Science</h3>
-                <div class="tag-container">
-                    <span class="tag">Python</span> <span class="tag">Pandas / NumPy</span> <span class="tag">Scikit-learn</span>
-                    <span class="tag">XGBoost</span> <span class="tag">Machine Learning</span> <span class="tag">Deep Learning</span>
-                </div>
+    <section class="reveal" id="skills" style="padding-top: 100px;">
+        <div class="container" style="padding-bottom: 20px;">
+            <h2 data-lang="h2_3">Aptitudes Técnicas</h2>
+            <div class="skills-header-grid">
+                <div class="skills-category" data-lang="skill_ia"><i class="fas fa-brain"></i> IA & Data Science</div>
+                <div class="skills-category" data-lang="skill_dev"><i class="fas fa-laptop-code"></i> Desarrollo Software</div>
+                <div class="skills-category" data-lang="skill_ciber"><i class="fas fa-shield-halved"></i> Ciberseguridad</div>
+                <div class="skills-category" data-lang="skill_sys"><i class="fas fa-server"></i> Sistemas</div>
+            </div>
+        </div>
+
+        <div class="carousel-wrapper">
+            <div class="carousel-track track-left">
+                <div class="tech-badge"><i class="fab fa-python"></i> Python</div>
+                <div class="tech-badge"><i class="fab fa-java"></i> Java</div>
+                <div class="tech-badge"><i class="fab fa-js"></i> JavaScript</div>
+                <div class="tech-badge"><i class="fab fa-react"></i> React Native</div>
+                <div class="tech-badge"><i class="fab fa-html5"></i> HTML5 & CSS3</div>
+                <div class="tech-badge"><i class="fab fa-git-alt"></i> Git / GitHub</div>
+                <div class="tech-badge"><i class="fas fa-database"></i> Pandas / NumPy</div>
+                <div class="tech-badge"><i class="fas fa-project-diagram"></i> Scikit-learn</div>
+                <div class="tech-badge"><i class="fab fa-python"></i> Python</div>
+                <div class="tech-badge"><i class="fab fa-java"></i> Java</div>
+                <div class="tech-badge"><i class="fab fa-js"></i> JavaScript</div>
+                <div class="tech-badge"><i class="fab fa-react"></i> React Native</div>
+                <div class="tech-badge"><i class="fab fa-html5"></i> HTML5 & CSS3</div>
+                <div class="tech-badge"><i class="fab fa-git-alt"></i> Git / GitHub</div>
+                <div class="tech-badge"><i class="fas fa-database"></i> Pandas / NumPy</div>
+                <div class="tech-badge"><i class="fas fa-project-diagram"></i> Scikit-learn</div>
             </div>
             
-            <div class="card bento-item">
-                <h3 data-lang="skill_dev"><i class="fas fa-laptop-code"></i> Desarrollo Software</h3>
-                <div class="tag-container">
-                    <span class="tag">Java</span> <span class="tag">JavaScript</span> <span class="tag">React Native</span>
-                    <span class="tag">HTML5 / CSS3</span> <span class="tag">Expo</span> <span class="tag">Git / GitHub</span>
-                </div>
-            </div>
-
-            <div class="card bento-item">
-                <h3 data-lang="skill_ciber"><i class="fas fa-shield-halved"></i> Ciberseguridad</h3>
-                <div class="tag-container">
-                    <span class="tag">Microsoft 365 Sec</span> <span class="tag">Azure AD</span> <span class="tag">IAM</span>
-                    <span class="tag">Hardening</span> <span class="tag">Burp Suite</span> <span class="tag">Nmap</span>
-                </div>
-            </div>
-
-            <div class="card bento-item">
-                <h3 data-lang="skill_sys"><i class="fas fa-server"></i> Sistemas</h3>
-                <div class="tag-container">
-                    <span class="tag">Linux</span> <span class="tag">Windows Server</span> <span class="tag">macOS</span>
-                    <span class="tag">VirtualBox</span> <span class="tag">Auditoría Técnica</span>
-                </div>
+            <div class="carousel-track track-right">
+                <div class="tech-badge"><i class="fab fa-linux"></i> Linux</div>
+                <div class="tech-badge"><i class="fab fa-microsoft"></i> Azure AD</div>
+                <div class="tech-badge"><i class="fab fa-windows"></i> Windows Server</div>
+                <div class="tech-badge"><i class="fas fa-shield-virus"></i> M365 Security</div>
+                <div class="tech-badge"><i class="fas fa-bug"></i> Burp Suite</div>
+                <div class="tech-badge"><i class="fas fa-network-wired"></i> Nmap</div>
+                <div class="tech-badge"><i class="fas fa-key"></i> IAM & Hardening</div>
+                <div class="tech-badge"><i class="fas fa-robot"></i> Machine Learning</div>
+                <div class="tech-badge"><i class="fab fa-linux"></i> Linux</div>
+                <div class="tech-badge"><i class="fab fa-microsoft"></i> Azure AD</div>
+                <div class="tech-badge"><i class="fab fa-windows"></i> Windows Server</div>
+                <div class="tech-badge"><i class="fas fa-shield-virus"></i> M365 Security</div>
+                <div class="tech-badge"><i class="fas fa-bug"></i> Burp Suite</div>
+                <div class="tech-badge"><i class="fas fa-network-wired"></i> Nmap</div>
+                <div class="tech-badge"><i class="fas fa-key"></i> IAM & Hardening</div>
+                <div class="tech-badge"><i class="fas fa-robot"></i> Machine Learning</div>
             </div>
         </div>
     </section>
 
-    <section class="container reveal" id="proyectos">
+    <section class="container reveal" id="proyectos" style="padding-top: 100px;">
         <h2 data-lang="h2_proj">Proyectos Destacados</h2>
         <div class="projects-grid">
             
@@ -373,7 +436,7 @@
                         <div class="icon"><i class="fas fa-microchip"></i></div>
                         <h3 data-lang="proj1_title">TFG: Automatización VM</h3>
                         <p data-lang="proj1_desc_short">Extensión integrable con Virt-Manager para la gestión automatizada y creación de máquinas virtuales.</p>
-                        <div class="tag-container" style="margin-top: 15px;">
+                        <div class="tag-container" style="margin-top: 20px;">
                             <span class="tag">Python</span> <span class="tag">Libvirt</span>
                         </div>
                         <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-up"></i></div>
@@ -381,10 +444,10 @@
                     <div class="flip-card-back">
                         <h3 data-lang="proj1_title_back">Automatización de VMs</h3>
                         <p data-lang="proj1_desc">Extensión diseñada para Virt-Manager que permite automatizar la creación de máquinas virtuales a partir de plantillas preconfiguradas, optimizando la gestión de pools de almacenamiento y redes mediante la API de Libvirt.</p>
-                        <div class="tag-container" style="margin-bottom: 20px;">
-                            <span class="tag">Python</span> <span class="tag">KVM/QEMU</span> <span class="tag">GTK+ 3</span> <span class="tag">Libvirt</span>
+                        <div class="tag-container" style="margin-bottom: 25px;">
+                            <span class="tag">Python</span> <span class="tag">KVM/QEMU</span> <span class="tag">Libvirt</span>
                         </div>
-                        <a href="https://github.com/pauruigar6" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositorio</a>
+                        <a href="https://github.com/pauruigar6" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositorio Oficial</a>
                     </div>
                 </div>
             </div>
@@ -395,7 +458,7 @@
                         <div class="icon"><i class="fas fa-users-gear"></i></div>
                         <h3 data-lang="proj2_title">Whizzy App</h3>
                         <p data-lang="proj2_desc_short">App colaborativa multiplataforma orientada a la gestión de tareas con sistema de gamificación.</p>
-                        <div class="tag-container" style="margin-top: 15px;">
+                        <div class="tag-container" style="margin-top: 20px;">
                             <span class="tag">React Native</span> <span class="tag">Expo</span>
                         </div>
                         <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-up"></i></div>
@@ -403,10 +466,10 @@
                     <div class="flip-card-back">
                         <h3 data-lang="proj2_title_back">Whizzy: Task Manager</h3>
                         <p data-lang="proj2_desc">Aplicación móvil colaborativa enfocada en la gestión de tareas del hogar. Implementa un sistema de puntuación, rankings en tiempo real y despliegue multiplataforma para fomentar la productividad mediante gamificación.</p>
-                        <div class="tag-container" style="margin-bottom: 20px;">
-                            <span class="tag">React Native</span> <span class="tag">Expo</span> <span class="tag">File-routing</span>
+                        <div class="tag-container" style="margin-bottom: 25px;">
+                            <span class="tag">React Native</span> <span class="tag">Expo</span>
                         </div>
-                        <a href="https://github.com/pauruigar6/Whizzy" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositorio</a>
+                        <a href="https://github.com/pauruigar6/Whizzy" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositorio Oficial</a>
                     </div>
                 </div>
             </div>
@@ -417,7 +480,7 @@
                         <div class="icon"><i class="fas fa-file-medical"></i></div>
                         <h3 data-lang="proj3_title">CareMonitor-IPe2</h3>
                         <p data-lang="proj3_desc_short">Aplicación del sector eHealth para el registro y gestión segura de datos médicos y multimedia.</p>
-                        <div class="tag-container" style="margin-top: 15px;">
+                        <div class="tag-container" style="margin-top: 20px;">
                             <span class="tag">JavaScript</span> <span class="tag">Firebase</span>
                         </div>
                         <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-up"></i></div>
@@ -425,10 +488,10 @@
                     <div class="flip-card-back">
                         <h3 data-lang="proj3_title_back">CareMonitor (eHealth)</h3>
                         <p data-lang="proj3_desc">Solución eHealth para monitorización de pacientes. Permite almacenar históricos médicos, integrar capturas de fotos, grabar audio contextual y garantizar la persistencia de datos en la nube de manera eficiente usando Firebase.</p>
-                        <div class="tag-container" style="margin-bottom: 20px;">
-                            <span class="tag">JavaScript</span> <span class="tag">Firebase</span> <span class="tag">Expo</span>
+                        <div class="tag-container" style="margin-bottom: 25px;">
+                            <span class="tag">JavaScript</span> <span class="tag">Firebase</span>
                         </div>
-                        <a href="https://github.com/pauruigar6/CareMonitor-IPe2" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositorio</a>
+                        <a href="https://github.com/pauruigar6/CareMonitor-IPe2" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositorio Oficial</a>
                     </div>
                 </div>
             </div>
@@ -436,10 +499,10 @@
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <div class="icon"><i class="fas fa-monument"></i></div>
+                        <div class="icon"><i class="fas fa-laptop-code"></i></div>
                         <h3 data-lang="proj4_title">Seville Website</h3>
                         <p data-lang="proj4_desc_short">Diseño web frontend interactivo y responsive con animaciones fluidas sobre la ciudad de Sevilla.</p>
-                        <div class="tag-container" style="margin-top: 15px;">
+                        <div class="tag-container" style="margin-top: 20px;">
                             <span class="tag">HTML5</span> <span class="tag">CSS3</span>
                         </div>
                         <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-up"></i></div>
@@ -447,10 +510,10 @@
                     <div class="flip-card-back">
                         <h3 data-lang="proj4_title_back">Seville Interactive Web</h3>
                         <p data-lang="proj4_desc">Proyecto visual centrado en UX/UI. Cuenta con diseño completamente responsive, integración de sliders de noticias personalizados mediante JavaScript y transiciones dinámicas para una experiencia inmersiva.</p>
-                        <div class="tag-container" style="margin-bottom: 20px;">
-                            <span class="tag">HTML5</span> <span class="tag">CSS3</span> <span class="tag">JS Vanilla</span>
+                        <div class="tag-container" style="margin-bottom: 25px;">
+                            <span class="tag">HTML5</span> <span class="tag">CSS3</span> <span class="tag">JS</span>
                         </div>
-                        <a href="https://github.com/pauruigar6/WebDesign" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositorio</a>
+                        <a href="https://github.com/pauruigar6/WebDesign" target="_blank" class="project-link"><i class="fab fa-github"></i> Repositorio Oficial</a>
                     </div>
                 </div>
             </div>
@@ -462,24 +525,24 @@
         <div class="edu-grid">
             
             <div>
-                <h2 data-lang="h2_4" style="margin-bottom: 20px;">Formación</h2>
-                <div class="card edu-card">
+                <h2 data-lang="h2_4" style="margin-bottom: 30px;">Formación</h2>
+                <div class="edu-card">
                     <span class="edu-date">2025 - 2026</span>
                     <h4 class="edu-title" data-lang="edu1_title">Máster Ciberseguridad e IA</h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">CEI – Centro de Estudios e Innovación</p>
+                    <p style="color: var(--text-muted); font-size: 1rem;">CEI – Centro de Estudios e Innovación</p>
                 </div>
-                <div class="card edu-card">
+                <div class="edu-card">
                     <span class="edu-date">2021 - 2025</span>
                     <h4 class="edu-title" data-lang="edu2_title">Grado en Ingeniería Informática</h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Universidad de Sevilla</p>
-                    <p style="font-size: 0.85rem; color: var(--accent); margin-top: 5px; font-weight: 600;" data-lang="edu2_sub">Incluye Erasmus+ en Brno Tech, Rep. Checa</p>
+                    <p style="color: var(--text-muted); font-size: 1rem;">Universidad de Sevilla</p>
+                    <p style="font-size: 0.9rem; color: var(--accent); margin-top: 8px; font-weight: 600;" data-lang="edu2_sub">Incluye Erasmus+ en Brno Tech, Rep. Checa</p>
                 </div>
             </div>
 
             <div>
-                <h2 data-lang="h2_5" style="margin-bottom: 20px;">Habilidades & Idiomas</h2>
-                <div class="card" style="margin-bottom: 20px; padding: 25px;">
-                    <h4 style="margin-bottom: 15px; font-size: 1.05rem;" data-lang="cert_title">Certificaciones</h4>
+                <h2 data-lang="h2_5" style="margin-bottom: 30px;">Habilidades & Idiomas</h2>
+                <div class="card" style="margin-bottom: 25px; padding: 30px;">
+                    <h4 style="margin-bottom: 20px; font-size: 1.15rem;" data-lang="cert_title">Certificaciones</h4>
                     <div class="tag-container">
                         <span class="tag" style="background: var(--bg-body);">Google: Foundations of Cybersecurity</span>
                         <span class="tag" style="background: var(--bg-body);">Google: Python Essentials 1 & 2</span>
@@ -488,8 +551,8 @@
                     </div>
                 </div>
 
-                <div class="card" style="margin-bottom: 20px; padding: 25px;">
-                    <h4 style="margin-bottom: 15px; font-size: 1.05rem;" data-lang="soft_title">Soft Skills</h4>
+                <div class="card" style="margin-bottom: 25px; padding: 30px;">
+                    <h4 style="margin-bottom: 20px; font-size: 1.15rem;" data-lang="soft_title">Soft Skills</h4>
                     <div class="tag-container">
                         <span class="tag">Proactividad y Autodidactismo</span>
                         <span class="tag">Pensamiento Analítico</span>
@@ -498,16 +561,16 @@
                     </div>
                 </div>
 
-                <div class="card" style="padding: 25px;">
+                <div class="card" style="padding: 30px;">
                     <div class="progress-container">
                         <div class="progress-label"><span data-lang="lang_es">Español</span> <span data-lang="lang_native">Nativo</span></div>
                         <div class="progress-bar"><div class="progress-inner" style="width: 100%;"></div></div>
                     </div>
-                    <div class="progress-container">
+                    <div class="progress-container" style="margin-top: 20px;">
                         <div class="progress-label"><span data-lang="lang_en">Inglés</span> <span>B2 - Cambridge</span></div>
                         <div class="progress-bar"><div class="progress-inner" style="width: 75%;"></div></div>
                     </div>
-                    <div class="progress-container">
+                    <div class="progress-container" style="margin-top: 20px;">
                         <div class="progress-label"><span data-lang="lang_de">Alemán</span> <span>A1/A2</span></div>
                         <div class="progress-bar"><div class="progress-inner" style="width: 30%;"></div></div>
                     </div>
@@ -519,21 +582,22 @@
 </main>
 
 <footer>
-    <div class="container" style="padding: 10px;">
+    <div class="container" style="padding: 0;">
         <h2 data-lang="footer_h2">¿Construimos algo increíble?</h2>
         <p>Siempre dispuesta a aprender y aportar en nuevos proyectos.</p>
-        <p style="margin-top: 20px;">
-            <a href="mailto:ruizgardonpaula@gmail.com"><i class="fas fa-envelope"></i> ruizgardonpaula@gmail.com</a> <span style="color: #a1a1a6; margin: 0 10px;">|</span> 
-            <span style="color: #a1a1a6;">+34 634 211 691</span>
-        </p>
-        <div style="margin-top: 50px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #6e6e73;" data-lang="footer_copy">
+        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; font-size: 1.1rem;">
+            <a href="mailto:ruizgardonpaula@gmail.com"><i class="fas fa-envelope"></i> ruizgardonpaula@gmail.com</a>
+            <span style="color: #6e6e73;">|</span> 
+            <span style="color: #a1a1a6;"><i class="fas fa-phone"></i> +34 634 211 691</span>
+        </div>
+        <div style="margin-top: 60px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #6e6e73; letter-spacing: 0.5px;" data-lang="footer_copy">
             Diseñado & Programado con Pasión • Sevilla, 2026
         </div>
     </div>
 </footer>
 
 <script>
-    // DICCIONARIO BILINGÜE
+    // DICCIONARIO BILINGÜE MANTENIDO INTACTO
     const translations = {
         es: {
             nav1: "Perfil", nav2: "Trayectoria", nav3: "Tecnologías", nav4: "Formación", nav5: "Proyectos", nav_contact: "Contactar",
@@ -597,13 +661,13 @@
         localStorage.setItem('portfolioLang', lang);
     }
 
-    // ANIMACIÓN SCROLL (Fade-in elegante estilo Apple)
+    // ANIMACIÓN SCROLL (Fade-in suave)
     function reveal() {
         var reveals = document.querySelectorAll(".reveal");
         for (var i = 0; i < reveals.length; i++) {
             var windowHeight = window.innerHeight;
             var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 100;
+            var elementVisible = 80;
             if (elementTop < windowHeight - elementVisible) {
                 reveals[i].classList.add("active");
             }
@@ -614,7 +678,7 @@
     window.onload = () => {
         const savedLang = localStorage.getItem('portfolioLang') || 'es';
         setLanguage(savedLang);
-        reveal(); // Lanzar la animación en la carga inicial
+        reveal(); // Lanzar en carga inicial
     };
 </script>
 
